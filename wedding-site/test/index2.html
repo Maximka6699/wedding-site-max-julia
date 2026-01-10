@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Свадьба Максима и Юлии | 29.08.2026</title>
+    
+    <!-- 1. Подключаем шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- 2. Подключаем библиотеку Iconify -->
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+
+    <style>
+        /* --- БАЗОВЫЕ НАСТРОЙКИ --- */
+        :root {
+            --bg-color: #FDFBF7;
+            --text-color: #5A504B;
+            --accent-color: #B09B87;
+            --heart-color: #AECAD6; /* Цвет сердечка (серо-голубой) */
+            --header-font: 'Cormorant Garamond', serif;
+            --body-font: 'Montserrat', sans-serif;
+            --container-width: 600px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--body-font);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--header-font);
+            text-transform: uppercase;
+            font-weight: 400;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        h1 { font-size: 4.5rem; margin-bottom: 10px; line-height: 1; }
+        h2 { font-size: 2.5rem; margin-bottom: 30px; color: var(--text-color); }
+        p { margin-bottom: 15px; text-align: center; }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 60px 0;
+            margin-bottom: 20px;
+        }
+
+        .divider {
+            width: 1px;
+            height: 60px;
+            background-color: var(--accent-color);
+            margin: 0 auto 30px;
+        }
+
+        /* --- КАРУСЕЛЬ ФОТО --- */
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            scroll-snap-type: x mandatory;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .carousel img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            flex-shrink: 0;
+            scroll-snap-align: center;
+            border-radius: 4px;
+        }
+        .carousel::-webkit-scrollbar { display: none; }
+
+        /* --- КАРТЫ --- */
+        .map-container {
+            width: 100%;
+            height: 400px; /* Высота под карты яндекса */
+            background: #eee;
+            margin-top: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- СТИЛИ ДЛЯ КАЛЕНДАРЯ --- */
+        .calendar-section {
+            /* Фон вернули обычный */
+            background-color: var(--bg-color); 
+        }
+
+        .calendar-card {
+            background: #fff;
+            border: 1px solid #EAE5DE; /* Легкая рамка */
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border-radius: 2px;
+        }
+
+        .month-header {
+            text-align: center;
+            text-transform: uppercase;
+            font-family: var(--header-font); /* Вернули шрифт заголовков */
+            font-size: 1.8rem;
+            border-bottom: 1px solid #EAE5DE;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            letter-spacing: 2px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            text-align: center;
+            font-family: var(--body-font);
+        }
+
+        .day-name {
+            font-size: 0.8rem;
+            color: #999;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .day-number {
+            height: 45px; /* Высота ячейки */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            position: relative;
+            color: #333;
+        }
+
+        /* --- СЕРДЦЕ ИЗ ICONIFY --- */
+        .heart-date-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .heart-icon {
+            position: absolute;
+            color: var(--heart-color); 
+            font-size: 48px; /* Размер сердца - побольше, чтобы закрыть число */
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .date-text {
+            position: relative;
+            z-index: 2; /* Текст поверх иконки */
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- 1. ПРИВЕТСТВИЕ -->
+    <section id="welcome">
+        <div class="container">
+            <h3 style="font-style: italic; text-transform: none; font-size: 3rem; margin-bottom: 20px;">Дорогие родные и близкие!</h3>
+            <p>Мы будем очень рады видеть вас на нашей свадьбе.</p>
+            <div style="text-align: center; margin: 40px 0;">
+                <h1>29.08.26</h1>
+                <p style="text-transform: uppercase; letter-spacing: 4px;">Максим & Юлия</p>
+            </div>
+            <div class="divider"></div>
+        </div>
+    </section>
+
+    <!-- 2. БЛОК КАЛЕНДАРЯ (ОБНОВЛЕННЫЙ) -->
+    <section class="calendar-section">
+        <div class="container">
+            <h2>Когда?</h2>
+            
+            <div class="calendar-card">
+                <div class="month-header">Август 2026</div>
+
+                <div class="calendar-grid">
+                    <!-- Дни недели -->
+                    <div class="day-name">Пн</div>
+                    <div class="day-name">Вт</div>
+                    <div class="day-name">Ср</div>
+                    <div class="day-name">Чт</div>
+                    <div class="day-name">Пт</div>
+                    <div class="day-name">Сб</div>
+                    <div class="day-name">Вс</div>
+
+                    <!-- Пустые ячейки (1 авг - суббота) -->
+                    <div></div> <div></div> <div></div> <div></div> <div></div>
+
+                    <!-- Числа -->
+                    <div class="day-number">1</div> <div class="day-number">2</div>
+                    <div class="day-number">3</div> <div class="day-number">4</div> <div class="day-number">5</div> <div class="day-number">6</div> <div class="day-number">7</div> <div class="day-number">8</div> <div class="day-number">9</div>
+                    <div class="day-number">10</div> <div class="day-number">11</div> <div class="day-number">12</div> <div class="day-number">13</div> <div class="day-number">14</div> <div class="day-number">15</div> <div class="day-number">16</div>
+                    <div class="day-number">17</div> <div class="day-number">18</div> <div class="day-number">19</div> <div class="day-number">20</div> <div class="day-number">21</div> <div class="day-number">22</div> <div class="day-number">23</div>
+                    <div class="day-number">24</div> <div class="day-number">25</div> <div class="day-number">26</div> <div class="day-number">27</div> <div class="day-number">28</div>
+
+                    <!-- ДАТА С СЕРДЦЕМ -->
+                    <div class="day-number">
+                        <div class="heart-date-wrapper">
+                            <!-- Иконка сердца из Iconify -->
+                            <span class="iconify heart-icon" data-icon="mdi:heart"></span>
+                            <!-- Число -->
+                            <span class="date-text">29</span>
+                        </div>
+                    </div>
+
+                    <div class="day-number">30</div> <div class="day-number">31</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. ЗАГС -->
+    <section id="zags">
+        <div class="container">
+            <h2>Торжественная регистрация</h2>
+            <p>Дворец Бракосочетания №1<br>Английская набережная, 28</p>
+            <p style="font-weight: bold; color: var(--accent-color);">Сбор гостей в 15:30</p>
+
+            <div class="carousel">
+                <img src="/img/оперный.png" alt="ЗАГС 1">
+                <img src="https://via.placeholder.com/600x400/EAE5DE/5A504B?text=Загс+2" alt="ЗАГС 2">
+            </div>
+
+            <!-- Блок карты ЗАГСа -->
+            <div class="map-container">
+                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A9f89829d446dbdb7f8796844932cae3030996fe2997182a6021141ecec34614f&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. РЕСТОРАН -->
+    <section id="restaurant" style="background-color: #F7F4EF;">
+        <div class="container">
+            <h2>Свадебный Ужин</h2>
+            <p>Ресторан "Название"<br>Улица Примерная, дом 10</p>
+            <p style="font-weight: bold; color: var(--accent-color);">Начало в 17:00</p>
+
+            <div class="carousel">
+                <img src="/img/белый (1).jpg" alt="Ресторан 1">
+                <img src="/img/белый (3).jpg" alt="Ресторан 2">
+            </div>
+
+            <!-- Блок карты Ресторана -->
+            <div class="map-container">
+                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A854a2f9278672369ac9c8fc34635cfb5c28809677108014a68b7d7ec26e36905&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. ПРОГРАММА ДНЯ -->
+    <style>
+        .timeline { position: relative; padding-left: 20px; border-left: 1px solid var(--accent-color); margin-left: 10px; }
+        .timeline-item { position: relative; margin-bottom: 40px; padding-left: 20px; }
+        /* Иконка-точка на таймлайне */
+        .timeline-item .icon-marker {
+            position: absolute;
+            left: -28px; 
+            top: 5px;
+            color: var(--accent-color);
+            background: var(--bg-color);
+            font-size: 16px;
+        }
+        .time { font-family: var(--header-font); font-size: 1.5rem; color: var(--accent-color); font-weight: bold; }
+        .event-title { font-weight: bold; text-transform: uppercase; margin-bottom: 5px; }
+        .event-desc { font-size: 0.9rem; font-style: italic; }
+    </style>
+    <section id="program">
+        <div class="container">
+            <h2>Программа дня</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="iconify icon-marker" data-icon="mdi:circle-outline"></span>
+                    <div class="time">15:30</div>
+                    <div class="event-title">Сбор гостей</div>
+                    <div class="event-desc">Встречаемся у загса, знакомимся, делаем фото.</div>
+                </div>
+                <div class="timeline-item">
+                    <span class="iconify icon-marker" data-icon="mdi:ring"></span>
+                    <div class="time">16:00</div>
+                    <div class="event-title">Церемония</div>
+                    <div class="event-desc">Самый важный момент.</div>
+                </div>
+                <div class="timeline-item">
+                    <span class="iconify icon-marker" data-icon="mdi:silverware-fork-knife"></span>
+                    <div class="time">17:00</div>
+                    <div class="event-title">Банкет</div>
+                    <div class="event-desc">Вкусная еда, танцы и веселье.</div>
+                </div>
+                <div class="timeline-item">
+                    <span class="iconify icon-marker" data-icon="mdi:party-popper"></span>
+                    <div class="time">23:00</div>
+                    <div class="event-title">Завершение вечера</div>
+                    <div class="event-desc">Торт и бенгальские огни.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. ПОЖЕЛАНИЯ -->
+    <section id="wishes" style="text-align: center;">
+        <div class="container">
+            <h2>Пожелания</h2>
+            <p>Ваши улыбки и смех — лучший подарок для нас!</p>
+            <p>Но если вы захотите нас поздравить, мы будем рады вкладу в бюджет нашей молодой семьи.</p>
+        </div>
+    </section>
+
+    <!-- 7. ДРЕСС-КОД -->
+    <style>
+        .palette { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
+        .color-circle { width: 50px; height: 50px; border-radius: 50%; border: 1px solid #ddd; }
+    </style>
+    <section id="dresscode">
+        <div class="container">
+            <h2>Дресс-код</h2>
+            <p>Мы будем рады, если вы поддержите цветовую гамму нашей свадьбы.</p>
+            
+            <p style="margin-top: 20px;"><strong>Палитра:</strong></p>
+            <div class="palette">
+                <div class="color-circle" style="background-color: #E6D2C4;"></div>
+                <div class="color-circle" style="background-color: #D3C4B6;"></div>
+                <div class="color-circle" style="background-color: #B8C0B1;"></div>
+                <div class="color-circle" style="background-color: #EAE5DE;"></div>
+                <div class="color-circle" style="background-color: #AECAD6;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. ВЫ ПРИДЕТЕ? -->
+    <section id="rsvp" style="background-color: #F7F4EF;">
+        <div class="container">
+            <h2>Вы придете?</h2>
+            <p>Пожалуйста, подтвердите свое присутствие до <strong>1 июля 2026</strong>.</p>
+            
+            <div style="margin-top: 30px; background: white; padding: 10px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                <!-- Место для формы (заглушка) -->
+                <iframe src="https://forms.yandex.ru/u/YOUR_FORM_ID/?iframe=1" frameborder="0" name="ya-form-YOUR_ID" width="100%" height="500"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. FOOTER -->
+    <section id="footer">
+        <div class="container" style="text-align: center;">
+            <h2 style="margin-bottom: 10px;">До встречи!</h2>
+            <p style="font-size: 1.5rem; font-family: 'Cormorant Garamond';">29.08.2026</p>
+        </div>
+    </section>
+
+</body>
+</html>

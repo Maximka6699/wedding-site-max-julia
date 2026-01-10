@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Максим & Юлия — Свадебное приглашение</title>
+    
+    <!-- Подключение Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Подключение иконок Iconify -->
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Настройка Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#F9F7F2',       // Слоновая кость
+                        text: '#5D4037',     // Темный шоколад
+                        accent: '#A1887F',   // Мягкое золото/бронза
+                        // Палитра свадьбы
+                        p1: '#966F5D', p2: '#C7A596', p3: '#757C60', p4: '#AAB098', 
+                        p5: '#BCAAA4', p6: '#EFEBE9', p7: '#D7BCB3', p8: '#F0E1DC', 
+                        p9: '#D6E3EB', p10: '#A4B0BE'
+                    },
+                    fontFamily: {
+                        heading: ['FoglihtenNo06', 'Cormorant Garamond', 'serif'],
+                        body: ['Montserrat', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        'std': '8px',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Подключение локального шрифта */
+        @font-face {
+            font-family: 'FoglihtenNo06';
+            src: url('fonts/FoglihtenNo06.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Плавная прокрутка */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Скрытие скроллбара для карусели, но сохранение функционала */
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-bg text-text font-body antialiased overflow-x-hidden selection:bg-accent selection:text-white">
+
+    <!-- HERO SECTION -->
+    <header class="relative w-full h-screen min-h-[600px] flex flex-col items-center justify-center text-center px-4 overflow-hidden">
+        <!-- Фоновое изображение с затемнением -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop" 
+                 alt="Максим и Юлия" class="w-full h-full object-cover opacity-80">
+            <div class="absolute inset-0 bg-bg/30 backdrop-blur-[2px]"></div>
+        </div>
+
+        <div class="relative z-10 max-w-2xl animate-fade-in-up">
+            <p class="uppercase tracking-[0.2em] text-sm mb-4">Приглашение на свадьбу</p>
+            <h1 class="font-heading text-6xl md:text-8xl text-text uppercase leading-tight mb-6">
+                Максим
+                <p class="text-accent text-5xl md:text-7xl align-middle">&</p>
+                Юлия
+            </h1>
+            
+            <div class="bg-bg/90 p-8 rounded-std shadow-lg backdrop-blur-sm mt-8 border border-accent/20">
+                <h2 class="font-heading text-2xl mb-4">Дорогие гости!</h2>
+                <p class="leading-relaxed mb-4">
+                    Один день в этом году будет для нас особенным, и мы хотим разделить его с вами.
+                    Ждем вас на празднике по случаю нашей свадьбы.
+                </p>
+                <div class="w-16 h-[1px] bg-accent mx-auto"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ДАТА И КАЛЕНДАРЬ -->
+    <section class="py-20 px-4 md:px-0 max-w-lg mx-auto text-center">
+        <h2 class="font-heading text-4xl md:text-5xl uppercase mb-10 text-text">Дата Свадьбы</h2>
+        
+        <div class="bg-white p-8 rounded-std shadow-sm border border-accent/10">
+            <h3 class="font-heading text-2xl mb-6 uppercase tracking-widest text-accent">Август 2026</h3>
+            
+            <div class="grid grid-cols-7 gap-2 md:gap-4 text-sm md:text-base font-medium text-text/70 mb-2">
+                <div>Пн</div><div>Вт</div><div>Ср</div><div>Чт</div><div>Пт</div><div>Сб</div><div>Вс</div>
+            </div>
+            
+            <div class="grid grid-cols-7 gap-2 md:gap-4 font-body">
+                <!-- Пустые ячейки для начала месяца (Август 2026 начинается с Субботы) -->
+                <div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div>
+                
+                <!-- Дни -->
+                <div class="p-2">1</div><div class="p-2">2</div><div class="p-2">3</div><div class="p-2">4</div>
+                <div class="p-2">5</div><div class="p-2">6</div><div class="p-2">7</div><div class="p-2">8</div>
+                <div class="p-2">9</div><div class="p-2">10</div><div class="p-2">11</div><div class="p-2">12</div>
+                <div class="p-2">13</div><div class="p-2">14</div><div class="p-2">15</div><div class="p-2">16</div>
+                <div class="p-2">17</div><div class="p-2">18</div><div class="p-2">19</div><div class="p-2">20</div>
+                <div class="p-2">21</div><div class="p-2">22</div><div class="p-2">23</div><div class="p-2">24</div>
+                <div class="p-2">25</div><div class="p-2">26</div><div class="p-2">27</div><div class="p-2">28</div>
+                
+                <!-- Дата свадьбы -->
+                <div class="relative p-2 flex items-center justify-center text-white">
+                    <span class="relative z-10 font-bold">29</span>
+                    <span class="iconify absolute text-accent text-4xl md:text-5xl -z-0 opacity-80" data-icon="ph:heart-fill"></span>
+                </div>
+                
+                <div class="p-2">30</div><div class="p-2">31</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ЗАГС -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-10">
+                <h2 class="font-heading text-3xl md:text-5xl uppercase mb-2">Торжественная регистрация</h2>
+                <p class="text-accent uppercase tracking-widest font-medium mb-4">Оперный дом</p>
+                <p class="mb-4">Оперный дом музея-заповедника "Царицыно"<br>г. Москва, ул. Дольская, д. 1, стр.5</p>
+                <!-- Используем время из блока контента, но держим в уме программу дня -->
+                <p class="text-lg">Сбор гостей в <span class="font-bold text-accent">13:00</span></p>
+            </div>
+
+            <!-- Карусель -->
+            <div class="relative group mb-8 rounded-std overflow-hidden shadow-md max-w-2xl mx-auto">
+                <div class="carousel flex overflow-x-auto snap-x snap-mandatory hide-scroll scroll-smooth" id="zags-carousel">
+                    <img src="img/оперный.png" class="w-full flex-shrink-0 snap-center object-cover aspect-[4/3]" alt="Царицыно">
+                    <img src="img/оперный.png" class="w-full flex-shrink-0 snap-center object-cover aspect-[4/3]" alt="Интерьер">
+                    <img src="img/оперный.png" class="w-full flex-shrink-0 snap-center object-cover aspect-[4/3]" alt="Парк">
+                </div>
+                <!-- Стрелки -->
+                <button onclick="scrollCarousel('zags-carousel', -1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white transition text-accent">
+                    <span class="iconify text-2xl" data-icon="ph:caret-left"></span>
+                </button>
+                <button onclick="scrollCarousel('zags-carousel', 1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white transition text-accent">
+                    <span class="iconify text-2xl" data-icon="ph:caret-right"></span>
+                </button>
+            </div>
+
+            <!-- Карта -->
+            <div class="w-full max-w-2xl mx-auto h-[400px] bg-gray-100 rounded-std overflow-hidden flex items-center justify-center border border-accent/20 mb-6">
+                <!-- PLACEHOLDER ДЛЯ СКРИПТА ЯНДЕКС КАРТЫ ЗАГСА -->
+                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A9f89829d446dbdb7f8796844932cae3030996fe2997182a6021141ecec34614f&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+            </div>
+            
+            <div class="text-center">
+                <a href="https://yandex.ru/maps/-/CLXTbXM2" target="_blank" class="inline-block border border-accent text-accent px-8 py-3 rounded-std uppercase tracking-wider text-sm hover:bg-accent hover:text-white transition duration-300">Проложить маршрут</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- РЕСТОРАН -->
+    <section class="py-20 bg-bg">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-10">
+                <h2 class="font-heading text-3xl md:text-5xl uppercase mb-2">Праздничный Банкет</h2>
+                <p class="text-accent uppercase tracking-widest font-medium mb-4">Ресторан "Белый"</p>
+                <p class="mb-4">г. Москва, ул. Арбат, 55/32</p>
+            </div>
+
+            <!-- Карусель -->
+            <div class="relative group mb-8 rounded-std overflow-hidden shadow-md max-w-2xl mx-auto">
+                <div class="carousel flex overflow-x-auto snap-x snap-mandatory hide-scroll scroll-smooth" id="rest-carousel">
+                    <img src="img/белый (1).jpg" class="w-full flex-shrink-0 snap-center object-cover aspect-[4/3]" alt="Ресторан">
+                    <img src="img/белый (2).jpg" class="w-full flex-shrink-0 snap-center object-cover aspect-[4/3]" alt="Банкет">
+                </div>
+                <button onclick="scrollCarousel('rest-carousel', -1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white transition text-accent">
+                    <span class="iconify text-2xl" data-icon="ph:caret-left"></span>
+                </button>
+                <button onclick="scrollCarousel('rest-carousel', 1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white transition text-accent">
+                    <span class="iconify text-2xl" data-icon="ph:caret-right"></span>
+                </button>
+            </div>
+
+            <!-- Карта -->
+            <div class="w-full max-w-2xl mx-auto h-[400px] bg-gray-100 rounded-std overflow-hidden flex items-center justify-center border border-accent/20 mb-6">
+                <!-- PLACEHOLDER ДЛЯ СКРИПТА ЯНДЕКС КАРТЫ РЕСТОРАНА -->
+                    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A854a2f9278672369ac9c8fc34635cfb5c28809677108014a68b7d7ec26e36905&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+            </div>
+
+            <div class="text-center">
+                <a href="https://yandex.ru/maps/-/CLXTfUnm" target="_blank" class="inline-block border border-accent text-accent px-8 py-3 rounded-std uppercase tracking-wider text-sm hover:bg-accent hover:text-white transition duration-300">Проложить маршрут</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПРОГРАММА ДНЯ -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-xl">
+            <h2 class="font-heading text-4xl md:text-5xl uppercase mb-16 text-center">Программа дня</h2>
+            
+            <div class="relative">
+                <!-- Вертикальная линия -->
+                <div class="absolute left-[80px] top-2 bottom-2 w-px bg-accent/30"></div>
+
+                <!-- 13:00 -->
+                <div class="flex items-start mb-12 relative">
+                    <div class="w-[60px] text-right font-heading text-2xl text-accent pt-1">13:00</div>
+                    <div class="w-[40px] flex justify-center pt-2 relative z-10">
+                        <div class="w-3 h-3 bg-bg border-2 border-accent rounded-full"></div>
+                    </div>
+                    <div class="flex-1 pt-1 pl-4">
+                        <h3 class="font-semibold uppercase text-m tracking-wider">Сбор гостей</h3>
+                    </div>
+                </div>
+
+                <!-- 13:30 -->
+                <div class="flex items-start mb-12 relative">
+                    <div class="w-[60px] text-right font-heading text-2xl text-accent pt-1">13:30</div>
+                    <div class="w-[40px] flex justify-center pt-2 relative z-10">
+                        <div class="w-3 h-3 bg-bg border-2 border-accent rounded-full"></div>
+                    </div>
+                    <div class="flex-1 pt-1 pl-4">
+                        <h3 class="font-semibold uppercase text-m tracking-wider">Торжественная регистрация брака</h3>
+                    </div>
+                </div>
+
+                <!-- 14:00 -->
+                <div class="flex items-start mb-12 relative">
+                    <div class="w-[60px] text-right font-heading text-2xl text-accent pt-1">14:00</div>
+                    <div class="w-[40px] flex justify-center pt-2 relative z-10">
+                        <div class="w-3 h-3 bg-bg border-2 border-accent rounded-full"></div>
+                    </div>
+                    <div class="flex-1 pt-1 pl-4">
+                        <h3 class="font-semibold uppercase textsm tracking-wider">Фотосессия с гостями</h3>
+                        <p class="text-sm opacity-80 mt-1">В парке Царицыно</p>
+                    </div>
+                </div>
+
+                <!-- 16:10 -->
+                <div class="flex items-start mb-12 relative">
+                    <div class="w-[60px] text-right font-heading text-2xl text-accent pt-1">16:10</div>
+                    <div class="w-[40px] flex justify-center pt-2 relative z-10">
+                        <div class="w-3 h-3 bg-bg border-2 border-accent rounded-full"></div>
+                    </div>
+                    <div class="flex-1 pt-1 pl-4">
+                        <h3 class="font-semibold uppercase text-m tracking-wider">Праздничный банкет</h3>
+                    </div>
+                </div>
+
+                <!-- 23:00 -->
+                <div class="flex items-start relative">
+                    <div class="w-[60px] text-right font-heading text-2xl text-accent pt-1">23:00</div>
+                    <div class="w-[40px] flex justify-center pt-2 relative z-10">
+                        <div class="w-3 h-3 bg-accent rounded-full"></div>
+                    </div>
+                    <div class="flex-1 pt-1 pl-4">
+                        <h3 class="font-semibold uppercase text-m tracking-wider">Завершение вечера</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОЖЕЛАНИЯ -->
+    <section class="py-20 bg-bg">
+        <div class="container mx-auto px-4 max-w-2xl text-center">
+            <span class="iconify text-5xl text-accent mx-auto mb-6" data-icon="ph:gift-thin"></span>
+            <h2 class="font-heading text-3xl md:text-4xl uppercase mb-8">Пожелания</h2>
+            <div class="bg-white p-8 md:p-12 rounded-std shadow-sm border border-accent/10">
+                <p class="mb-6 leading-relaxed">
+                    Дорогие родные и близкие! Просим не отягощать себя выбором цветов, наилучший подарок для нас — ваше присутствие и теплые слова.
+                </p>
+                <p class="leading-relaxed">
+                    Если хотите преподнести ценный и нужный подарок, мы будем очень благодарны за вклад в бюджет нашей молодой семьи. И совсем не важно, в какой конверт вы его упакуете!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ДРЕСС-КОД -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-4xl text-center">
+            <h2 class="font-heading text-4xl md:text-5xl uppercase mb-8">Дресс-код</h2>
+            <p class="max-w-2xl mx-auto mb-12 text-lg">
+                Мы очень ждем и с удовольствием готовимся к нашему дню! Поэтому будем благодарны, если вы поддержите стилистику праздника в своих нарядах.
+            </p>
+
+            <!-- Для Женщин -->
+            <div class="mb-16">
+                <h3 class="font-heading text-2xl mb-4 text-accent">Для дам</h3>
+                <p class="mb-6 opacity-80">Девушек просим выбрать наряды в цветовой палитре нашей свадьбы</p>
+                
+                <!-- Палитра -->
+                <div class="flex flex-wrap justify-center gap-3 md:gap-4 mb-8">
+                    <!-- Генерация кружочков -->
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full shadow-sm" style="background-color: #966F5D;" title="Коричневый"></div>
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full shadow-sm" style="background-color: #C7A596;" title="Пыльная роза"></div>
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full shadow-sm" style="background-color: #757C60;" title="Оливковый"></div>
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full shadow-sm" style="background-color: #AAB098;" title="Шалфей"></div>
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full shadow-sm" style="background-color: #BCAAA4;" title="Тауп"></div>
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full shadow-sm" style="background-color: #EFEBE9;" title="Крем"></div>
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full shadow-sm" style="background-color: #D7BCB3;" title="Розовый"></div>
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full shadow-sm" style="background-color: #F0E1DC;" title="Бледно-розовый"></div>
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full shadow-sm" style="background-color: #D6E3EB;" title="Светло-голубой"></div>
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full shadow-sm" style="background-color: #A4B0BE;" title="Серо-голубой"></div>
+                </div>
+
+                <!-- Референсы Женщины -->
+                <div class="relative group max-w-2xl mx-auto rounded-std overflow-hidden">
+                    <div class="carousel flex overflow-x-auto snap-x snap-mandatory hide-scroll scroll-smooth" id="women-carousel">
+                         <!-- Placeholder images for dresses -->
+                        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=1983&auto=format&fit=crop" class="w-1/2 md:w-1/3 flex-shrink-0 snap-center object-cover aspect-[3/4] p-1" alt="Dress 1">
+                        <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=2024&auto=format&fit=crop" class="w-1/2 md:w-1/3 flex-shrink-0 snap-center object-cover aspect-[3/4] p-1" alt="Dress 2">
+                        <img src="https://images.unsplash.com/photo-1585250917646-64c8f334df50?q=80&w=1974&auto=format&fit=crop" class="w-1/2 md:w-1/3 flex-shrink-0 snap-center object-cover aspect-[3/4] p-1" alt="Dress 3">
+                        <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?q=80&w=1974&auto=format&fit=crop" class="w-1/2 md:w-1/3 flex-shrink-0 snap-center object-cover aspect-[3/4] p-1" alt="Dress 4">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Для Мужчин -->
+            <div>
+                <h3 class="font-heading text-2xl mb-4 text-accent">Для джентльменов</h3>
+                <p class="mb-6 opacity-80">Будет уместен черный классический костюм</p>
+                
+                <!-- Референсы Мужчины -->
+                <div class="relative group max-w-2xl mx-auto rounded-std overflow-hidden">
+                    <div class="carousel flex overflow-x-auto snap-x snap-mandatory hide-scroll scroll-smooth" id="men-carousel">
+                         <!-- Placeholder images for suits -->
+                        <img src="https://images.unsplash.com/photo-1593032465175-481ac7f401a0?q=80&w=2080&auto=format&fit=crop" class="w-1/2 md:w-1/3 flex-shrink-0 snap-center object-cover aspect-[3/4] p-1" alt="Suit 1">
+                        <img src="https://images.unsplash.com/photo-1594938298603-c8148c47e356?q=80&w=1974&auto=format&fit=crop" class="w-1/2 md:w-1/3 flex-shrink-0 snap-center object-cover aspect-[3/4] p-1" alt="Suit 2">
+                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop" class="w-1/2 md:w-1/3 flex-shrink-0 snap-center object-cover aspect-[3/4] p-1" alt="Suit 3">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="py-20 bg-bg text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="font-heading text-4xl md:text-5xl uppercase mb-6">Вы придете?</h2>
+            <p class="mb-10 text-lg">Пожалуйста, подтвердите ваше присутствие до 01.08.2026</p>
+            
+            <a href="https://forms.yandex.ru/u/695e3e716d2d731037ad8f68" target="_blank" class="inline-block bg-accent text-white px-10 py-4 rounded-std uppercase tracking-widest hover:bg-opacity-90 transition duration-300 shadow-lg transform hover:-translate-y-1">
+                Подтвердить присутствие
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-20 bg-text text-bg text-center relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="font-heading text-5xl md:text-6xl uppercase mb-6">До встречи</h2>
+            <p class="font-heading text-3xl text-accent mb-10">29.08.2026</p>
+            
+            <div class="max-w-md mx-auto rounded-std overflow-hidden border-4 border-white/10 shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1623838270381-c75c5cc85d82?q=80&w=1974&auto=format&fit=crop" 
+                     alt="Максим и Юлия" class="w-full h-auto grayscale hover:grayscale-0 transition duration-700">
+            </div>
+            
+            <p class="mt-10 text-sm opacity-50 font-light uppercase tracking-widest">Максим & Юлия</p>
+        </div>
+    </footer>
+
+    <!-- Скрипт для каруселей -->
+    <script>
+        function scrollCarousel(id, direction) {
+            const container = document.getElementById(id);
+            const scrollAmount = container.clientWidth;
+            container.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
