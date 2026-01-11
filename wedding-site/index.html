@@ -49,6 +49,34 @@
         }
     </script>
 
+    <!-- JAVASCRIPT ЛОГИКА -->
+    <script>
+        // --- 0. СБРОС СОСТОЯНИЯ ПРИ ПЕРЕЗАГРУЗКЕ ---
+        // Заставляем браузер забыть позицию скролла и вернуть всё в начало
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+
+        window.onload = function() {
+            // 1. Прокручиваем страницу наверх
+            window.scrollTo(0, 0);
+            
+            // 2. Сбрасываем ползунок в начало (0)
+            const slider = document.getElementById('unlock-slider');
+            if (slider) {
+                slider.value = 0;
+            }
+
+            // 3. Возвращаем конверт в исходное положение (если он был повернут)
+            const envelope = document.getElementById('envelope-visual');
+            if (envelope) {
+                envelope.style.transform = 'rotate(0deg)';
+            }
+        };
+
+        // ... (Дальше идет ваш остальной код: scrollCarousel, unlockSite и т.д.) ...
+    </script>
+
     <style>
         /* Подключение шрифта */
         @font-face {
@@ -303,26 +331,30 @@
                 
                 <div class="relative">
                     
-                    <!-- 1. Сбор гостей (Добавлен class program-item + delay) -->
+                    <!-- 1. Сбор гостей -->
                     <div class="flex items-stretch mb-12 relative program-item" style="transition-delay: 0ms;">
-                        <div class="w-[60px] text-right font-heading text-2xl text-accent pt-1">13:00</div>
+                        <!-- БЫЛО: w-[60px] text-2xl -->
+                        <!-- СТАЛО: w-[100px] text-xl md:text-2xl (шире и чуть меньше шрифт на мобилке) -->
+                        <div class="w-[120px] text-right font-heading text-xl md:text-2xl text-accent pt-1 pr-3 whitespace-nowrap">13:00</div>
+                        
                         <div class="w-[40px] flex flex-col items-center relative z-10 pt-2">
                             <div class="w-3 h-3 bg-bg border-2 border-accent rounded-full z-20"></div>
                             <div class="absolute top-[14px] w-px bg-accent/30 h-[calc(100%+3rem)] -z-10"></div>
                         </div>
-                        <div class="flex-1 pt-1 pl-4 pb-2">
+                        <div class="flex-1 pt-1 pl-2 pb-2">
                             <h3 class="font-semibold uppercase text-m tracking-wider">Сбор гостей</h3>
                         </div>
                     </div>
 
                     <!-- 2. Регистрация -->
                     <div class="flex items-stretch mb-12 relative program-item" style="transition-delay: 200ms;">
-                        <div class="w-[60px] text-right font-heading text-2xl text-accent pt-1">13:30</div>
+                        <div class="w-[120px] text-right font-heading text-xl md:text-2xl text-accent pt-1 pr-3 whitespace-nowrap">13:30</div>
+                        
                         <div class="w-[40px] flex flex-col items-center relative z-10 pt-2">
                             <div class="w-3 h-3 bg-bg border-2 border-accent rounded-full z-20"></div>
                             <div class="absolute top-[14px] w-px bg-accent/30 h-[calc(100%+3rem)] -z-10"></div>
                         </div>
-                        <div class="flex-1 pt-1 pl-4 pb-2">
+                        <div class="flex-1 pt-1 pl-2 pb-2">
                             <h3 class="font-semibold uppercase text-m tracking-wider">Торжественная регистрация брака</h3>
                             <p class="text-sm opacity-80 mt-1">В Оперном доме</p>
                         </div>
@@ -330,25 +362,28 @@
 
                     <!-- 3. Фотосессия -->
                     <div class="flex items-stretch mb-12 relative program-item" style="transition-delay: 400ms;">
-                        <div class="w-[60px] text-right font-heading text-2xl text-accent pt-1">14:00</div>
+                        <div class="w-[120px] text-right font-heading text-xl md:text-2xl text-accent pt-1 pr-3 whitespace-nowrap">14:00</div>
+                        
                         <div class="w-[40px] flex flex-col items-center relative z-10 pt-2">
                             <div class="w-3 h-3 bg-bg border-2 border-accent rounded-full z-20"></div>
                             <div class="absolute top-[14px] w-px bg-accent/30 h-[calc(100%+3rem)] -z-10"></div>
                         </div>
-                        <div class="flex-1 pt-1 pl-4 pb-2">
+                        <div class="flex-1 pt-1 pl-2 pb-2">
                             <h3 class="font-semibold uppercase text-sm tracking-wider">Фотосессия с гостями</h3>
                             <p class="text-sm opacity-80 mt-1">В парке Царицыно</p>
                         </div>
                     </div>
 
-                    <!-- 4. Банкет -->
+                    <!-- 4. Банкет (ДЛИННОЕ ВРЕМЯ) -->
                     <div class="flex items-stretch mb-12 relative program-item" style="transition-delay: 600ms;">
-                        <div class="w-[60px] text-right font-heading text-2xl text-accent pt-1">16:30</div>
+                        <!-- Теперь здесь достаточно места -->
+                        <div class="w-[120px] text-right font-heading text-xl md:text-2xl text-accent pt-1 pr-3 whitespace-nowrap">16:00~16:30</div>
+                        
                         <div class="w-[40px] flex flex-col items-center relative z-10 pt-2">
                             <div class="w-3 h-3 bg-bg border-2 border-accent rounded-full z-20"></div>
                             <div class="absolute top-[14px] w-px bg-accent/30 h-[calc(100%+3rem)] -z-10"></div>
                         </div>
-                        <div class="flex-1 pt-1 pl-4 pb-2">
+                        <div class="flex-1 pt-1 pl-2 pb-2">
                             <h3 class="font-semibold uppercase text-m tracking-wider">Праздничный банкет</h3>
                             <p class="text-sm opacity-80 mt-1">В ресторане "Белый"</p>
                         </div>
@@ -356,11 +391,12 @@
 
                     <!-- 5. Завершение -->
                     <div class="flex items-start relative program-item" style="transition-delay: 800ms;">
-                        <div class="w-[60px] text-right font-heading text-2xl text-accent pt-1">22:30</div>
+                        <div class="w-[120px] text-right font-heading text-xl md:text-2xl text-accent pt-1 pr-3 whitespace-nowrap">22:30~23:00</div>
+                        
                         <div class="w-[40px] flex justify-center pt-2 relative z-10">
                             <div class="w-3 h-3 bg-accent rounded-full"></div>
                         </div>
-                        <div class="flex-1 pt-1 pl-4">
+                        <div class="flex-1 pt-1 pl-2">
                             <h3 class="font-semibold uppercase text-m tracking-wider">Завершение вечера</h3>
                         </div>
                     </div>
@@ -479,7 +515,7 @@
         <section class="py-20 bg-bg text-center">
             <div class="container mx-auto px-4">
                 <h2 class="font-heading text-4xl md:text-5xl uppercase mb-6 reveal-text">Вы придете?</h2>
-                <a href="https://forms.yandex.ru/u/695e3e716d2d731037ad8f68" target="_blank" class="inline-block bg-accent text-white px-10 py-4 rounded-std uppercase tracking-widest hover:bg-opacity-90 transition duration-300 shadow-lg transform hover:-translate-y-1 reveal-text">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSew7ZAX1A95UuUtm7SYeDu6QcXtNYzhZ5eAfLG7JYsI5UQCAw/viewform?usp=header" target="_blank" class="inline-block bg-accent text-white px-10 py-4 rounded-std uppercase tracking-widest hover:bg-opacity-90 transition duration-300 shadow-lg transform hover:-translate-y-1 reveal-text">
                     Подтвердить присутствие
                 </a>
             </div>
@@ -604,4 +640,3 @@
     </script>
 </body>
 </html>
-
