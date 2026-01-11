@@ -16,6 +16,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+    <!-- === ИКОНКИ САЙТА (SVG + Fallback) === -->
+
+    <!-- 1. Основная иконка (SVG) -->
+    <!-- Работает во всех современных браузерах (Chrome, Firefox, Edge, Android) -->
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+
+    <!-- 2. Специально для Safari на macOS (Закрепленная вкладка) -->
+    <!-- color задает цвет, в который покрасится иконка (ваш лавандовый) -->
+    <link rel="mask-icon" href="img/favicon.svg" color="#9D84B7">
+
+    <!-- 3. ИСКЛЮЧЕНИЕ: iPhone и iPad -->
+    <!-- iOS до сих пор НЕ понимает SVG для иконки приложения. 
+         Здесь обязательно нужен PNG (желательно квадрат 180x180px). 
+         Если у вас нет png, iPhone сделает просто скриншот страницы. -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon.png">
+
+    <!-- 4. Цвет адресной строки браузера (Мобильный Chrome/Safari) -->
+    <meta name="theme-color" content="#9D84B7">
+
+    
     <!-- Настройка Tailwind Config -->
     <script>
         tailwind.config = {
@@ -749,3 +769,4 @@
     </script>
 </body>
 </html>
+
