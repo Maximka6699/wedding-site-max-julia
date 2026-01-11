@@ -15,8 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+
     <!-- Настройка Tailwind Config -->
     <script>
         tailwind.config = {
@@ -512,17 +511,70 @@
             });
         </script>
 
-        <!-- RSVP -->
-        <section class="py-20 bg-bg text-center">
-            <div class="container mx-auto px-4">
+<!-- RSVP ФОРМА -->
+        <section class="py-20 bg-bg text-center" id="rsvp-section">
+            <div class="container mx-auto px-4 max-w-xl">
                 <h2 class="font-heading text-4xl md:text-5xl uppercase mb-6 reveal-text">Вы придете?</h2>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSew7ZAX1A95UuUtm7SYeDu6QcXtNYzhZ5eAfLG7JYsI5UQCAw/viewform?usp=header" target="_blank" class="inline-block bg-accent text-white px-10 py-4 rounded-std uppercase tracking-widest hover:bg-opacity-90 transition duration-300 shadow-lg transform hover:-translate-y-1 reveal-text">
-                    Подтвердить присутствие
-                </a>
+                <p class="mb-10 text-lg reveal-text">Пожалуйста, подтвердите ваше присутствие, заполнив форму ниже</p>
+                
+                <!-- Блок самой формы -->
+                <div class="bg-white p-8 md:p-10 rounded-std shadow-lg border border-accent/20 reveal-text relative overflow-hidden">
+                    
+                    <!-- Сообщение об успехе (скрыто по умолчанию) -->
+                    <div id="success-message" class="hidden absolute inset-0 bg-white z-20 flex flex-col items-center justify-center p-6 text-center">
+                        <span class="iconify text-6xl text-accent mb-4 animate-bounce" data-icon="ph:check-circle-light"></span>
+                        <h3 class="font-heading text-3xl text-text mb-2">Спасибо!</h3>
+                        <p class="text-lg opacity-80">Ваш ответ принят. Ждем встречи!</p>
+                    </div>
+
+                    <!-- Форма -->
+                    <form id="wedding-form" class="space-y-6 text-left relative z-10">
+                        
+                        <!-- 1. Имя -->
+                        <div>
+                            <label class="block text-sm uppercase tracking-widest text-accent mb-2 font-bold">Ваше Имя и Фамилия</label>
+                            <input type="text" name="name" required placeholder="Иванов Иван" 
+                                class="w-full bg-bg border border-gray-200 rounded-std p-4 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition duration-300">
+                        </div>
+
+                        <!-- 2. Вы придете? -->
+                        <div>
+                            <label class="block text-sm uppercase tracking-widest text-accent mb-2 font-bold">Вы придете?</label>
+                            <div class="flex gap-4">
+                                <label class="flex-1 cursor-pointer">
+                                    <input type="radio" name="attendance" value="Да" class="peer sr-only" checked>
+                                    <div class="block text-center p-3 border border-gray-200 rounded-std peer-checked:bg-accent peer-checked:text-white peer-checked:border-accent transition hover:bg-gray-50">
+                                        Да, с радостью
+                                    </div>
+                                </label>
+                                <label class="flex-1 cursor-pointer">
+                                    <input type="radio" name="attendance" value="Нет" class="peer sr-only">
+                                    <div class="block text-center p-3 border border-gray-200 rounded-std peer-checked:bg-text peer-checked:text-white peer-checked:border-text transition hover:bg-gray-50">
+                                        К сожалению, нет
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- 3. Трек -->
+                        <div>
+                            <label class="block text-sm uppercase tracking-widest text-accent mb-2 font-bold">Трек, который ассоциируется с нашей парой и ваш любимый трек</label>
+                            <input type="text" name="song" placeholder="Баста - Медлячок" 
+                                class="w-full bg-bg border border-gray-200 rounded-std p-4 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition duration-300">
+                        </div>
+
+                        <!-- Кнопка отправить -->
+                        <button type="submit" id="submit-btn" class="w-full bg-accent text-white py-4 rounded-std uppercase tracking-widest hover:bg-opacity-90 transition duration-300 shadow-lg transform active:scale-95 flex justify-center items-center gap-2">
+                            <span>Отправить ответ</span>
+                            <!-- Спиннер загрузки (скрыт) -->
+                            <span id="loader" class="hidden iconify animate-spin text-xl" data-icon="ph:spinner-gap"></span>
+                        </button>
+                    </form>
+                </div>
             </div>
         </section>
 
-        <!-- FOOTER -->
+        <!-- FOOTER (оставляем без изменений, просто чтобы код был цельным) -->
         <footer class="py-20 bg-[#E6E6FA] text-[#5D4037] text-center relative overflow-hidden">
             <div class="container mx-auto px-4 relative z-10">
                 <h2 class="font-heading text-5xl md:text-6xl uppercase mb-6">До встречи</h2>
@@ -533,6 +585,62 @@
                 <p class="mt-10 text-sm opacity-60 font-light uppercase tracking-widest">Максим & Юлия</p>
             </div>
         </footer>
+
+        <!-- СКРИПТ ОТПРАВКИ ФОРМЫ -->
+        <script>
+            // !!! ВСТАВЬ СЮДА СВОЮ ССЫЛКУ ИЗ GOOGLE SCRIPTS (ШАГ 3) !!!
+            const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzaoLC3jGq1NaCXJD9tq1ts1F2EfhA5cjC8WUFccKVV1xP6yhDuOpTgJVl6ySL_YztQwg/exec";
+
+            const form = document.getElementById('wedding-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const loader = document.getElementById('loader');
+            const successMessage = document.getElementById('success-message');
+
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+
+                // 1. Блокируем кнопку и показываем загрузку
+                submitBtn.disabled = true;
+                submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+                loader.classList.remove('hidden');
+
+                // 2. Собираем данные
+                const formData = new FormData(form);
+                const data = {
+                    name: formData.get('name'),
+                    attendance: formData.get('attendance'),
+                    song: formData.get('song') || "Не указано"
+                };
+
+                // 3. Отправляем в Google Sheets
+                // mode: 'no-cors' важен, так как Google не всегда отдает корректные заголовки для браузера
+                fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', 
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(() => {
+                    // Успех! (При no-cors мы не видим реальный ответ, но если дошли сюда - значит запрос ушел)
+                    setTimeout(() => {
+                        successMessage.classList.remove('hidden');
+                        successMessage.classList.add('flex'); // Показываем блок успеха
+                        form.reset();
+                    }, 1000); // Небольшая задержка для красоты
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert('Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз или напишите нам в мессенджер.');
+                    
+                    // Возвращаем кнопку в исходное состояние
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+                    loader.classList.add('hidden');
+                });
+            });
+        </script>
 
     </div>
 
@@ -641,4 +749,3 @@
     </script>
 </body>
 </html>
-
