@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Максим & Юлия — Свадебное приглашение</title>
-    
+
     <!-- Подключение Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Подключение иконок Iconify -->
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 
 
     <!-- Настройка Tailwind Config -->
@@ -23,9 +26,9 @@
             theme: {
                 extend: {
                     colors: {
-                        bg: '#F8F6FA',       
-                        text: '#4E4054',     
-                        accent: '#9D84B7',   
+                        bg: '#F8F6FA',
+                        text: '#4E4054',
+                        accent: '#9D84B7',
                     },
                     fontFamily: {
                         heading: ['FoglihtenNo06', 'Cormorant Garamond', 'serif'],
@@ -41,8 +44,8 @@
                         heartbeat: {
                             '0%, 100%': { transform: 'scale(1)' },
                             '10%, 20%': { transform: 'scale(0.9) rotate(-3deg)' },
-                            '30%, 50%, 70%': { transform: 'scale(1.2) rotate(3deg)' }, 
-                            '80%': { transform: 'scale(1.1) rotate(-3deg)' }, 
+                            '30%, 50%, 70%': { transform: 'scale(1.2) rotate(3deg)' },
+                            '80%': { transform: 'scale(1.1) rotate(-3deg)' },
                         }
                     }
                 }
@@ -58,10 +61,10 @@
             history.scrollRestoration = 'manual';
         }
 
-        window.onload = function() {
+        window.onload = function () {
             // 1. Прокручиваем страницу наверх
             window.scrollTo(0, 0);
-            
+
             // 2. Сбрасываем ползунок в начало (0)
             const slider = document.getElementById('unlock-slider');
             if (slider) {
@@ -87,7 +90,12 @@
             font-style: normal;
         }
 
-        html, body { height: 100%; margin: 0; scroll-behavior: smooth; }
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            scroll-behavior: smooth;
+        }
 
         /* --- СТИЛИ ДЛЯ АНИМАЦИЙ --- */
 
@@ -97,6 +105,7 @@
             transform: translateY(50px);
             transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
+
         .reveal-text.active {
             opacity: 1;
             transform: translateY(0);
@@ -109,6 +118,7 @@
             filter: blur(5px);
             transition: all 0.8s ease-out;
         }
+
         .program-item.active {
             opacity: 1;
             transform: translateX(0);
@@ -122,6 +132,7 @@
             transform: scale(0.95);
             transition: all 1.5s ease;
         }
+
         .blur-reveal-card.active {
             opacity: 1;
             filter: blur(0) brightness(1);
@@ -133,45 +144,184 @@
             content: '|';
             animation: blink 1s step-start infinite;
         }
-        @keyframes blink { 50% { opacity: 0; } }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
 
 
         /* --- WELCOME SCREEN STYLES (БЕЗ ИЗМЕНЕНИЙ) --- */
         #welcome-screen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
             background: url('img/Снимок\ экрана\ 2026-01-10\ 174953.png') no-repeat center center/cover;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             transition: opacity 0.8s ease, visibility 0.8s;
         }
+
         @media (min-width: 768px) {
-            #welcome-screen { background-image: url('img/кольцо\ на\ море.jpg'); }
+            #welcome-screen {
+                background-image: url('img/кольцо\ на\ море.jpg');
+            }
         }
+
         #welcome-screen::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(249, 247, 242, 0.4); backdrop-filter: blur(3px); z-index: -1;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(249, 247, 242, 0.4);
+            backdrop-filter: blur(3px);
+            z-index: -1;
         }
-        .unlock-container { position: relative; width: 100%; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px; }
-        .envelope-img { width: 75vw; height: auto; max-width: 500px; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2)); transition: transform 0.1s linear; will-change: transform; }
-        @media (min-width: 768px) { .envelope-img { width: 50vw; max-width: 600px; } }
-        .slider-wrapper { position: relative; width: 260px; height: 60px; display: flex; align-items: center; justify-content: center; }
-        .dotted-line { position: absolute; top: 50%; left: 25px; right: 25px; height: 0; border-top: 2px dotted #6e1212; z-index: 1; }
-        .target-circle { position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 50px; height: 50px; border: 2px solid #6e1212; border-radius: 50%; box-sizing: border-box; z-index: 0; }
-        input[type="range"] { -webkit-appearance: none; width: 100%; height: 60px; background: transparent; position: relative; z-index: 10; margin: 0; cursor: pointer; outline: none; }
-        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 50px; height: 50px; background-color: #6e1212; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.3); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M16.175 13H4v-2h12.175l-5.6-5.6L12 4l8 8l-8 8l-1.425-1.4L16.175 13Z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; transition: transform 0.2s; }
-        input[type="range"]::-moz-range-thumb { width: 50px; height: 50px; background-color: #6e1212; border: none; border-radius: 50%; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M16.175 13H4v-2h12.175l-5.6-5.6L12 4l8 8l-8 8l-1.425-1.4L16.175 13Z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; }
-        input[type="range"]::-webkit-slider-runnable-track { background: transparent; }
-        body.locked { overflow: hidden; }
-        #main-site-wrapper { opacity: 0; filter: blur(10px); transform: translateY(100px); transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1); will-change: transform, opacity, filter; }
-        #main-site-wrapper.revealed { opacity: 1; filter: blur(0); transform: translateY(0); }
-        .hide-scroll::-webkit-scrollbar { display: none; }
-        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .unlock-container {
+            position: relative;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .envelope-img {
+            width: 75vw;
+            height: auto;
+            max-width: 500px;
+            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+            transition: transform 0.1s linear;
+            will-change: transform;
+        }
+
+        @media (min-width: 768px) {
+            .envelope-img {
+                width: 50vw;
+                max-width: 600px;
+            }
+        }
+
+        .slider-wrapper {
+            position: relative;
+            width: 260px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dotted-line {
+            position: absolute;
+            top: 50%;
+            left: 25px;
+            right: 25px;
+            height: 0;
+            border-top: 2px dotted #6e1212;
+            z-index: 1;
+        }
+
+        .target-circle {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border: 2px solid #6e1212;
+            border-radius: 50%;
+            box-sizing: border-box;
+            z-index: 0;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 60px;
+            background: transparent;
+            position: relative;
+            z-index: 10;
+            margin: 0;
+            cursor: pointer;
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 50px;
+            height: 50px;
+            background-color: #6e1212;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M16.175 13H4v-2h12.175l-5.6-5.6L12 4l8 8l-8 8l-1.425-1.4L16.175 13Z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: transform 0.2s;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 50px;
+            height: 50px;
+            background-color: #6e1212;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M16.175 13H4v-2h12.175l-5.6-5.6L12 4l8 8l-8 8l-1.425-1.4L16.175 13Z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: transparent;
+        }
+
+        body.locked {
+            overflow: hidden;
+        }
+
+        #main-site-wrapper {
+            opacity: 0;
+            filter: blur(10px);
+            transform: translateY(100px);
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform, opacity, filter;
+        }
+
+        #main-site-wrapper.revealed {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 </head>
+
 <body class="bg-bg text-text font-body antialiased overflow-x-hidden selection:bg-accent selection:text-white locked">
 
-        <!-- === ПРЕЛОАДЕР (ЭКРАН ЗАГРУЗКИ) === -->
-    <div id="global-preloader" class="fixed inset-0 z-[10000] bg-bg flex flex-col items-center justify-center transition-opacity duration-700 ease-out">
-        
+    <!-- === ПРЕЛОАДЕР (ЭКРАН ЗАГРУЗКИ) === -->
+    <div id="global-preloader"
+        class="fixed inset-0 z-[10000] bg-bg flex flex-col items-center justify-center transition-opacity duration-700 ease-out">
+
         <!-- Иконка сердца (бьется) -->
         <div class="mb-4 text-accent">
             <span class="iconify text-6xl animate-heartbeat" data-icon="ph:heart-fill"></span>
@@ -200,13 +350,14 @@
                 <div class="target-circle"></div>
                 <input type="range" min="0" max="100" value="0" id="unlock-slider">
             </div>
-            <p class="font-heading text-text/80 text-lg animate-pulse" style="margin-top:-10px">Потяните, чтобы открыть</p>
+            <p class="font-heading text-text/80 text-lg animate-pulse" style="margin-top:-10px">Потяните, чтобы открыть
+            </p>
         </div>
     </div>
 
     <!-- 2. ОСНОВНОЙ КОНТЕНТ -->
     <div id="main-site-wrapper">
-        
+
         <!-- HERO SECTION -->
         <header class="relative w-full h-[100dvh] flex flex-col items-center px-4 overflow-hidden pt-16 pb-28">
             <div class="absolute inset-0 z-0">
@@ -230,13 +381,16 @@
 
             <!-- КАРТОЧКА С ТАЙПРАЙТЕРОМ -->
             <!-- Добавлен ID 'glass-card' и класс 'blur-reveal-card' -->
-            <div id="glass-card" class="blur-reveal-card relative z-10 max-w-md w-full bg-white/20 backdrop-blur-md p-6 md:p-8 rounded-std border border-white/30 text-white shadow-xl text-center">
+            <div id="glass-card"
+                class="blur-reveal-card relative z-10 max-w-md w-full bg-white/20 backdrop-blur-md p-6 md:p-8 rounded-std border border-white/30 text-white shadow-xl text-center">
                 <h2 class="font-heading text-2xl mb-4 uppercase tracking-wide">Дорогие гости!</h2>
                 <div class="w-12 h-[1px] bg-white/50 mx-auto mb-4"></div>
-                
+
                 <!-- Пустой параграф для текста печатной машинки -->
                 <!-- Класс min-h-[50px] чтобы карточка не прыгала по высоте -->
-                <p id="typewriter-text" class="leading-relaxed text-sm md:text-base opacity-95 font-light min-h-[60px] typewriter-cursor"></p>
+                <p id="typewriter-text"
+                    class="leading-relaxed text-sm md:text-base opacity-95 font-light min-h-[60px] typewriter-cursor">
+                </p>
             </div>
 
             <div class="absolute bottom-6 left-0 right-0 mx-auto w-fit z-20 text-white animate-bounce cursor-pointer opacity-80 hover:opacity-100"
@@ -249,33 +403,68 @@
         <section class="py-20 px-4 md:px-0 max-w-lg mx-auto text-center">
             <!-- Добавлен класс reveal-text -->
             <h2 class="font-heading text-4xl md:text-5xl uppercase mb-10 text-text reveal-text">Дата Свадьбы</h2>
-            
-            <div class="bg-white p-8 rounded-std shadow-sm border border-accent/10 reveal-text" style="transition-delay: 200ms;">
+
+            <div class="bg-white p-8 rounded-std shadow-sm border border-accent/10 reveal-text"
+                style="transition-delay: 200ms;">
                 <h3 class="font-heading text-2xl mb-6 uppercase tracking-widest text-accent">Август 2026</h3>
-                
+
                 <div class="grid grid-cols-7 gap-2 md:gap-4 text-sm md:text-base font-medium text-text/70 mb-2">
-                    <div>Пн</div><div>Вт</div><div>Ср</div><div>Чт</div><div>Пт</div><div>Сб</div><div>Вс</div>
+                    <div>Пн</div>
+                    <div>Вт</div>
+                    <div>Ср</div>
+                    <div>Чт</div>
+                    <div>Пт</div>
+                    <div>Сб</div>
+                    <div>Вс</div>
                 </div>
-                
+
                 <div class="grid grid-cols-7 gap-2 md:gap-4 font-body">
-                    <div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div>
-                    
-                    <div class="p-2">1</div><div class="p-2">2</div><div class="p-2">3</div><div class="p-2">4</div>
-                    <div class="p-2">5</div><div class="p-2">6</div><div class="p-2">7</div><div class="p-2">8</div>
-                    <div class="p-2">9</div><div class="p-2">10</div><div class="p-2">11</div><div class="p-2">12</div>
-                    <div class="p-2">13</div><div class="p-2">14</div><div class="p-2">15</div><div class="p-2">16</div>
-                    <div class="p-2">17</div><div class="p-2">18</div><div class="p-2">19</div><div class="p-2">20</div>
-                    <div class="p-2">21</div><div class="p-2">22</div><div class="p-2">23</div><div class="p-2">24</div>
-                    <div class="p-2">25</div><div class="p-2">26</div><div class="p-2">27</div><div class="p-2">28</div>
-                    
+                    <div class="p-2"></div>
+                    <div class="p-2"></div>
+                    <div class="p-2"></div>
+                    <div class="p-2"></div>
+                    <div class="p-2"></div>
+
+                    <div class="p-2">1</div>
+                    <div class="p-2">2</div>
+                    <div class="p-2">3</div>
+                    <div class="p-2">4</div>
+                    <div class="p-2">5</div>
+                    <div class="p-2">6</div>
+                    <div class="p-2">7</div>
+                    <div class="p-2">8</div>
+                    <div class="p-2">9</div>
+                    <div class="p-2">10</div>
+                    <div class="p-2">11</div>
+                    <div class="p-2">12</div>
+                    <div class="p-2">13</div>
+                    <div class="p-2">14</div>
+                    <div class="p-2">15</div>
+                    <div class="p-2">16</div>
+                    <div class="p-2">17</div>
+                    <div class="p-2">18</div>
+                    <div class="p-2">19</div>
+                    <div class="p-2">20</div>
+                    <div class="p-2">21</div>
+                    <div class="p-2">22</div>
+                    <div class="p-2">23</div>
+                    <div class="p-2">24</div>
+                    <div class="p-2">25</div>
+                    <div class="p-2">26</div>
+                    <div class="p-2">27</div>
+                    <div class="p-2">28</div>
+
                     <!-- Дата свадьбы с анимацией -->
                     <div class="relative p-2 flex items-center justify-center text-white">
                         <span class="relative z-10 font-bold">29</span>
                         <!-- ЗАМЕНЕНО: Добавлен класс animate-heartbeat вместо статики -->
-                        <span class="iconify absolute text-accent text-4xl md:text-5xl -z-0 opacity-80 animate-heartbeat" data-icon="ph:heart-fill"></span>
+                        <span
+                            class="iconify absolute text-accent text-4xl md:text-5xl -z-0 opacity-80 animate-heartbeat"
+                            data-icon="ph:heart-fill"></span>
                     </div>
-                    
-                    <div class="p-2">30</div><div class="p-2">31</div>
+
+                    <div class="p-2">30</div>
+                    <div class="p-2">31</div>
                 </div>
             </div>
         </section>
@@ -285,31 +474,44 @@
             <div class="container mx-auto px-4 max-w-4xl">
                 <!-- Заголовки с reveal-text -->
                 <div class="text-center mb-10">
-                    <h2 class="font-heading text-3xl md:text-5xl uppercase mb-2 reveal-text">Торжественная регистрация</h2>
-                    <p class="text-accent uppercase tracking-widest font-medium mb-4 reveal-text" style="transition-delay: 100ms;">Оперный дом</p>
-                    <p class="mb-4 reveal-text" style="transition-delay: 200ms;">Оперный дом музея-заповедника "Царицыно"<br>г. Москва, ул. Дольская, д. 1, стр.5</p>
-                    <p class="text-lg reveal-text" style="transition-delay: 300ms;">Сбор гостей в <span class="font-bold text-accent">13:00</span></p>
+                    <h2 class="font-heading text-3xl md:text-5xl uppercase mb-2 reveal-text">Торжественная регистрация
+                    </h2>
+                    <p class="text-accent uppercase tracking-widest font-medium mb-4 reveal-text"
+                        style="transition-delay: 100ms;">Оперный дом</p>
+                    <p class="mb-4 reveal-text" style="transition-delay: 200ms;">Оперный дом музея-заповедника
+                        "Царицыно"<br>г. Москва, ул. Дольская, д. 1, стр.5</p>
+                    <p class="text-lg reveal-text" style="transition-delay: 300ms;">Сбор гостей в <span
+                            class="font-bold text-accent">13:00</span></p>
                 </div>
 
                 <div class="relative group mb-8 rounded-std overflow-hidden shadow-md max-w-2xl mx-auto reveal-text">
-                    <div class="carousel flex overflow-x-auto snap-x snap-mandatory hide-scroll scroll-smooth" id="zags-carousel">
-                        <img src="img/оперный.png" class="w-full flex-shrink-0 snap-center object-cover aspect-[4/3]" alt="Царицыно">
-                        <img src="img/оперный-внутри.jpg" class="w-full flex-shrink-0 snap-center object-cover aspect-[4/3]" alt="Интерьер">
+                    <div class="carousel flex overflow-x-auto snap-x snap-mandatory hide-scroll scroll-smooth"
+                        id="zags-carousel">
+                        <img src="img/оперный.png" class="w-full flex-shrink-0 snap-center object-cover aspect-[4/3]"
+                            alt="Царицыно">
+                        <img src="img/оперный-внутри.jpg"
+                            class="w-full flex-shrink-0 snap-center object-cover aspect-[4/3]" alt="Интерьер">
                     </div>
-                    <button onclick="scrollCarousel('zags-carousel', -1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white transition text-accent">
+                    <button onclick="scrollCarousel('zags-carousel', -1)"
+                        class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white transition text-accent">
                         <span class="iconify text-2xl" data-icon="ph:caret-left"></span>
                     </button>
-                    <button onclick="scrollCarousel('zags-carousel', 1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white transition text-accent">
+                    <button onclick="scrollCarousel('zags-carousel', 1)"
+                        class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white transition text-accent">
                         <span class="iconify text-2xl" data-icon="ph:caret-right"></span>
                     </button>
                 </div>
 
-                <div class="w-full max-w-2xl mx-auto h-[400px] bg-gray-100 rounded-std overflow-hidden flex items-center justify-center border border-accent/20 mb-6 reveal-text">
-                    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A9f89829d446dbdb7f8796844932cae3030996fe2997182a6021141ecec34614f&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+                <div
+                    class="w-full max-w-2xl mx-auto h-[400px] bg-gray-100 rounded-std overflow-hidden flex items-center justify-center border border-accent/20 mb-6 reveal-text">
+                    <script type="text/javascript" charset="utf-8" async
+                        src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A9f89829d446dbdb7f8796844932cae3030996fe2997182a6021141ecec34614f&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
                 </div>
-                
+
                 <div class="text-center reveal-text">
-                    <a href="https://yandex.ru/maps/-/CLXTbXM2" target="_blank" class="inline-block border border-accent text-accent px-8 py-3 rounded-std uppercase tracking-wider text-sm hover:bg-accent hover:text-white transition duration-300">Проложить маршрут</a>
+                    <a href="https://yandex.ru/maps/-/CLXTbXM2" target="_blank"
+                        class="inline-block border border-accent text-accent px-8 py-3 rounded-std uppercase tracking-wider text-sm hover:bg-accent hover:text-white transition duration-300">Проложить
+                        маршрут</a>
                 </div>
             </div>
         </section>
@@ -320,29 +522,40 @@
                 <!-- Заголовки с reveal-text -->
                 <div class="text-center mb-10">
                     <h2 class="font-heading text-3xl md:text-5xl uppercase mb-2 reveal-text">Праздничный Банкет</h2>
-                    <p class="text-accent uppercase tracking-widest font-medium mb-4 reveal-text" style="transition-delay: 100ms;">Ресторан "Белый"</p>
-                    <p class="mb-4 reveal-text" style="transition-delay: 200ms;">г. Москва, ул. Арбат, 55/32</p>
+                    <p class="text-accent uppercase tracking-widest font-medium mb-4 reveal-text"
+                        style="transition-delay: 100ms;">Банкетный зал "Московский"</p>
+                    <p class="mb-4 reveal-text" style="transition-delay: 200ms;">г. Москва, Измайловское ш., 71, корп.
+                        3В</p>
                 </div>
 
                 <div class="relative group mb-8 rounded-std overflow-hidden shadow-md max-w-2xl mx-auto reveal-text">
-                    <div class="carousel flex overflow-x-auto snap-x snap-mandatory hide-scroll scroll-smooth" id="rest-carousel">
-                        <img src="img/белый (1).jpg" class="w-full flex-shrink-0 snap-center object-cover aspect-[4/3]" alt="Ресторан">
-                        <img src="img/белый (2).jpg" class="w-full flex-shrink-0 snap-center object-cover aspect-[4/3]" alt="Банкет">
+                    <div class="carousel flex overflow-x-auto snap-x snap-mandatory hide-scroll scroll-smooth"
+                        id="rest-carousel">
+                        <img src="img/msk_slider1.jpg"
+                            class="w-full flex-shrink-0 snap-center object-cover aspect-[4/3]" alt="Ресторан">
+                        <img src="img/msk_slider2.jpg"
+                            class="w-full flex-shrink-0 snap-center object-cover aspect-[4/3]" alt="Банкет">
                     </div>
-                    <button onclick="scrollCarousel('rest-carousel', -1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white transition text-accent">
+                    <button onclick="scrollCarousel('rest-carousel', -1)"
+                        class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white transition text-accent">
                         <span class="iconify text-2xl" data-icon="ph:caret-left"></span>
                     </button>
-                    <button onclick="scrollCarousel('rest-carousel', 1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white transition text-accent">
+                    <button onclick="scrollCarousel('rest-carousel', 1)"
+                        class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white transition text-accent">
                         <span class="iconify text-2xl" data-icon="ph:caret-right"></span>
                     </button>
                 </div>
 
-                <div class="w-full max-w-2xl mx-auto h-[400px] bg-gray-100 rounded-std overflow-hidden flex items-center justify-center border border-accent/20 mb-6 reveal-text">
-                        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A854a2f9278672369ac9c8fc34635cfb5c28809677108014a68b7d7ec26e36905&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+                <div
+                    class="w-full max-w-2xl mx-auto h-[400px] bg-gray-100 rounded-std overflow-hidden flex items-center justify-center border border-accent/20 mb-6 reveal-text">
+                    <script type="text/javascript" charset="utf-8" async
+                        src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aaedbe4aa3354f240792f88870a793678d7b7de586d9241c85c4f51172d6af16f&amp;width=100%&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
                 </div>
 
                 <div class="text-center reveal-text">
-                    <a href="https://yandex.ru/maps/-/CLXTfUnm" target="_blank" class="inline-block border border-accent text-accent px-8 py-3 rounded-std uppercase tracking-wider text-sm hover:bg-accent hover:text-white transition duration-300">Проложить маршрут</a>
+                    <a href="https://yandex.ru/maps/-/CTQr7Gla" target="_blank"
+                        class="inline-block border border-accent text-accent px-8 py-3 rounded-std uppercase tracking-wider text-sm hover:bg-accent hover:text-white transition duration-300">Проложить
+                        маршрут</a>
                 </div>
             </div>
         </section>
@@ -351,13 +564,15 @@
         <section class="py-20 bg-white">
             <div class="container mx-auto px-4 max-w-xl">
                 <h2 class="font-heading text-4xl md:text-5xl uppercase mb-16 text-center reveal-text">Программа дня</h2>
-                
+
                 <div class="relative">
-                    
+
                     <!-- 1. Сбор гостей -->
                     <div class="flex items-stretch mb-12 relative program-item" style="transition-delay: 0ms;">
-                        <div class="w-[120px] text-right font-heading text-xl md:text-2xl text-accent pt-1 pr-3 whitespace-nowrap">13:00</div>
-                        
+                        <div
+                            class="w-[120px] text-right font-heading text-xl md:text-2xl text-accent pt-1 pr-3 whitespace-nowrap">
+                            13:00</div>
+
                         <div class="w-[40px] flex flex-col items-center relative z-10 pt-2">
                             <div class="w-3 h-3 bg-bg border-2 border-accent rounded-full z-20"></div>
                             <div class="absolute top-[14px] w-px bg-accent/30 h-[calc(100%+3rem)] -z-10"></div>
@@ -369,22 +584,27 @@
 
                     <!-- 2. Регистрация -->
                     <div class="flex items-stretch mb-12 relative program-item" style="transition-delay: 200ms;">
-                        <div class="w-[120px] text-right font-heading text-xl md:text-2xl text-accent pt-1 pr-3 whitespace-nowrap">13:30</div>
-                        
+                        <div
+                            class="w-[120px] text-right font-heading text-xl md:text-2xl text-accent pt-1 pr-3 whitespace-nowrap">
+                            13:30</div>
+
                         <div class="w-[40px] flex flex-col items-center relative z-10 pt-2">
                             <div class="w-3 h-3 bg-bg border-2 border-accent rounded-full z-20"></div>
                             <div class="absolute top-[14px] w-px bg-accent/30 h-[calc(100%+3rem)] -z-10"></div>
                         </div>
                         <div class="flex-1 pt-1 pl-2 pb-2">
-                            <h3 class="font-semibold uppercase text-m tracking-wider">Торжественная регистрация брака</h3>
+                            <h3 class="font-semibold uppercase text-m tracking-wider">Торжественная регистрация брака
+                            </h3>
                             <p class="text-sm opacity-80 mt-1">В Оперном доме</p>
                         </div>
                     </div>
 
                     <!-- 3. Фотосессия -->
                     <div class="flex items-stretch mb-12 relative program-item" style="transition-delay: 400ms;">
-                        <div class="w-[120px] text-right font-heading text-xl md:text-2xl text-accent pt-1 pr-3 whitespace-nowrap">14:00</div>
-                        
+                        <div
+                            class="w-[120px] text-right font-heading text-xl md:text-2xl text-accent pt-1 pr-3 whitespace-nowrap">
+                            14:00</div>
+
                         <div class="w-[40px] flex flex-col items-center relative z-10 pt-2">
                             <div class="w-3 h-3 bg-bg border-2 border-accent rounded-full z-20"></div>
                             <div class="absolute top-[14px] w-px bg-accent/30 h-[calc(100%+3rem)] -z-10"></div>
@@ -400,9 +620,10 @@
                         <!-- Левая колонка изменена: теперь внутри div -->
                         <div class="w-[120px] text-right pr-2 pt-1">
                             <!-- Время -->
-                            <div class="font-heading text-xl md:text-2xl text-accent whitespace-nowrap leading-none">16:30</div>
+                            <div class="font-heading text-xl md:text-2xl text-accent whitespace-nowrap leading-none">
+                                16:30</div>
                         </div>
-                        
+
                         <div class="w-[40px] flex flex-col items-center relative z-10 pt-2">
                             <div class="w-3 h-3 bg-bg border-2 border-accent rounded-full z-20"></div>
                             <div class="absolute top-[14px] w-px bg-accent/30 h-[calc(100%+3rem)] -z-10"></div>
@@ -415,8 +636,10 @@
 
                     <!-- 5. Завершение (Время тоже обновлено как на макете 22:30~23:00) -->
                     <div class="flex items-start relative program-item" style="transition-delay: 800ms;">
-                        <div class="w-[120px] text-right font-heading text-xl md:text-2xl text-accent pt-1 pr-3 whitespace-nowrap">22:30~23:00</div>
-                        
+                        <div
+                            class="w-[120px] text-right font-heading text-xl md:text-2xl text-accent pt-1 pr-3 whitespace-nowrap">
+                            22:30~23:00</div>
+
                         <div class="w-[40px] flex justify-center pt-2 relative z-10">
                             <div class="w-3 h-3 bg-accent rounded-full"></div>
                         </div>
@@ -436,10 +659,12 @@
                 <h2 class="font-heading text-3xl md:text-4xl uppercase mb-8 reveal-text">Пожелания</h2>
                 <div class="bg-white p-8 md:p-12 rounded-std shadow-sm border border-accent/10 reveal-text">
                     <p class="mb-6 leading-relaxed">
-                        Дорогие родные и близкие! Просим не отягощать себя выбором цветов, наилучший подарок для нас — ваше присутствие и теплые слова.
+                        Дорогие родные и близкие! Просим не отягощать себя выбором цветов, наилучший подарок для нас —
+                        ваше присутствие и теплые слова.
                     </p>
                     <p class="leading-relaxed">
-                        Если хотите преподнести ценный и нужный подарок, мы будем очень благодарны за вклад в бюджет нашей молодой семьи. И совсем не важно, в какой конверт вы его упакуете!
+                        Если хотите преподнести ценный и нужный подарок, мы будем очень благодарны за вклад в бюджет
+                        нашей молодой семьи. И совсем не важно, в какой конверт вы его упакуете!
                     </p>
                 </div>
             </div>
@@ -450,43 +675,67 @@
             <div class="container mx-auto px-4 max-w-4xl text-center">
                 <h2 class="font-heading text-4xl md:text-5xl uppercase mb-8 reveal-text">Дресс-код</h2>
                 <p class="max-w-2xl mx-auto mb-12 text-lg reveal-text">
-                    Мы очень ждем и с удовольствием готовимся к нашему дню! Поэтому будем благодарны, если вы поддержите стилистику праздника в своих нарядах.
+                    Мы очень ждем и с удовольствием готовимся к нашему дню! Поэтому будем благодарны, если вы поддержите
+                    стилистику праздника в своих нарядах.
                 </p>
 
                 <!-- ================= ДЛЯ ДАМ ================= -->
                 <div class="mb-20">
                     <h3 class="font-heading text-2xl mb-4 text-accent reveal-text">Для дам</h3>
-                    <p class="mb-8 opacity-80 reveal-text">Девушек просим выбрать наряды в цветовой палитре нашей свадьбы</p>
-                    
+                    <p class="mb-8 opacity-80 reveal-text">Девушек просим выбрать наряды в цветовой палитре нашей
+                        свадьбы</p>
+
                     <div class="flex flex-wrap justify-center gap-6 md:gap-10 mb-12 reveal-text">
-                        <span class="iconify text-5xl md:text-7xl drop-shadow-sm transition hover:scale-110" data-icon="ph:heart-fill" style="color: #eaddca;" title="Бежевый"></span>
-                        <span class="iconify text-5xl md:text-7xl drop-shadow-sm transition hover:scale-110" data-icon="ph:heart-fill" style="color: #b4dee9;" title="Зеленый"></span>
-                        <span class="iconify text-5xl md:text-7xl drop-shadow-sm transition hover:scale-110" data-icon="ph:heart-fill" style="color: #c2cec4;" title="Голубой"></span>
-                        <span class="iconify text-5xl md:text-7xl drop-shadow-sm transition hover:scale-110" data-icon="ph:heart-fill" style="color: #f0e8ba;" title="Желтый"></span>
-                        <span class="iconify text-5xl md:text-7xl drop-shadow-sm transition hover:scale-110" data-icon="ph:heart-fill" style="color: #beb4d4;" title="Лавандовый"></span>
-                        <span class="iconify text-5xl md:text-7xl drop-shadow-sm transition hover:scale-110" data-icon="ph:heart-fill" style="color: #C4C7CC;" title="Серый"></span>
+                        <span class="iconify text-5xl md:text-7xl drop-shadow-sm transition hover:scale-110"
+                            data-icon="ph:heart-fill" style="color: #eaddca;" title="Бежевый"></span>
+                        <span class="iconify text-5xl md:text-7xl drop-shadow-sm transition hover:scale-110"
+                            data-icon="ph:heart-fill" style="color: #b4dee9;" title="Зеленый"></span>
+                        <span class="iconify text-5xl md:text-7xl drop-shadow-sm transition hover:scale-110"
+                            data-icon="ph:heart-fill" style="color: #c2cec4;" title="Голубой"></span>
+                        <span class="iconify text-5xl md:text-7xl drop-shadow-sm transition hover:scale-110"
+                            data-icon="ph:heart-fill" style="color: #f0e8ba;" title="Желтый"></span>
+                        <span class="iconify text-5xl md:text-7xl drop-shadow-sm transition hover:scale-110"
+                            data-icon="ph:heart-fill" style="color: #beb4d4;" title="Лавандовый"></span>
+                        <span class="iconify text-5xl md:text-7xl drop-shadow-sm transition hover:scale-110"
+                            data-icon="ph:heart-fill" style="color: #C4C7CC;" title="Серый"></span>
                     </div>
 
                     <div class="relative group max-w-2xl mx-auto rounded-std overflow-hidden mb-8 reveal-text">
-                        <div class="carousel flex overflow-x-auto snap-x snap-mandatory hide-scroll scroll-smooth" id="women-carousel">
-                            <img src="img/dress/dress-e (5).png" class="w-full flex-shrink-0 snap-center object-contain aspect-[4/3] bg-transparent" alt="Бежевые платья">
-                            <img src="img/dress/dress-e (4).png" class="w-full flex-shrink-0 snap-center object-contain aspect-[4/3] bg-transparent" alt="Зеленые платья">
-                            <img src="img/dress/dress-e (1).png" class="w-full flex-shrink-0 snap-center object-contain aspect-[4/3] bg-transparent" alt="Голубые платья">
-                            <img src="img/dress/dress-e (2).png" class="w-full flex-shrink-0 snap-center object-contain aspect-[4/3] bg-transparent" alt="Желтые платья">
-                            <img src="img/dress/dress-e (3).png" class="w-full flex-shrink-0 snap-center object-contain aspect-[4/3] bg-transparent" alt="Лавандовые платья">
-                            <img src="img/dress/dress-e (6).png" class="w-full flex-shrink-0 snap-center object-contain aspect-[4/3] bg-transparent" alt="Серые платья">
+                        <div class="carousel flex overflow-x-auto snap-x snap-mandatory hide-scroll scroll-smooth"
+                            id="women-carousel">
+                            <img src="img/dress/dress-e (5).png"
+                                class="w-full flex-shrink-0 snap-center object-contain aspect-[4/3] bg-transparent"
+                                alt="Бежевые платья">
+                            <img src="img/dress/dress-e (4).png"
+                                class="w-full flex-shrink-0 snap-center object-contain aspect-[4/3] bg-transparent"
+                                alt="Зеленые платья">
+                            <img src="img/dress/dress-e (1).png"
+                                class="w-full flex-shrink-0 snap-center object-contain aspect-[4/3] bg-transparent"
+                                alt="Голубые платья">
+                            <img src="img/dress/dress-e (2).png"
+                                class="w-full flex-shrink-0 snap-center object-contain aspect-[4/3] bg-transparent"
+                                alt="Желтые платья">
+                            <img src="img/dress/dress-e (3).png"
+                                class="w-full flex-shrink-0 snap-center object-contain aspect-[4/3] bg-transparent"
+                                alt="Лавандовые платья">
+                            <img src="img/dress/dress-e (6).png"
+                                class="w-full flex-shrink-0 snap-center object-contain aspect-[4/3] bg-transparent"
+                                alt="Серые платья">
                         </div>
-                        
-                        <button onclick="scrollCarousel('women-carousel', -1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/40 backdrop-blur-sm p-3 rounded-full hover:bg-white text-accent shadow-sm transition">
+
+                        <button onclick="scrollCarousel('women-carousel', -1)"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/40 backdrop-blur-sm p-3 rounded-full hover:bg-white text-accent shadow-sm transition">
                             <span class="iconify text-3xl" data-icon="ph:caret-left"></span>
                         </button>
-                        <button onclick="scrollCarousel('women-carousel', 1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/40 backdrop-blur-sm p-3 rounded-full hover:bg-white text-accent shadow-sm transition">
+                        <button onclick="scrollCarousel('women-carousel', 1)"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/40 backdrop-blur-sm p-3 rounded-full hover:bg-white text-accent shadow-sm transition">
                             <span class="iconify text-3xl" data-icon="ph:caret-right"></span>
                         </button>
                     </div>
 
                     <div class="flex justify-center gap-3 reveal-text" id="carousel-bullets">
-                        <div class="w-3 h-3 rounded-full bg-accent transition-all duration-300 transform scale-110"></div>
+                        <div class="w-3 h-3 rounded-full bg-accent transition-all duration-300 transform scale-110">
+                        </div>
                         <div class="w-3 h-3 rounded-full bg-gray-200 transition-all duration-300"></div>
                         <div class="w-3 h-3 rounded-full bg-gray-200 transition-all duration-300"></div>
                         <div class="w-3 h-3 rounded-full bg-gray-200 transition-all duration-300"></div>
@@ -498,12 +747,16 @@
                 <!-- ================= ДЛЯ ДЖЕНТЛЬМЕНОВ ================= -->
                 <div>
                     <h3 class="font-heading text-2xl mb-6 text-accent reveal-text">Для джентльменов</h3>
-                    
+
                     <div class="flex flex-wrap justify-center gap-6 md:gap-8 mb-8 reveal-text">
-                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-full shadow-md border-2 border-white ring-1 ring-gray-100" style="background-color: #4E3831;"></div>
-                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-full shadow-md border-2 border-white ring-1 ring-gray-100" style="background-color: #876758;"></div>
-                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-full shadow-md border-2 border-white ring-1 ring-gray-100" style="background-color: #C3C6CB;"></div>
-                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-full shadow-md border-2 border-white ring-1 ring-gray-100" style="background-color: #E8D3C8;"></div>
+                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-full shadow-md border-2 border-white ring-1 ring-gray-100"
+                            style="background-color: #4E3831;"></div>
+                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-full shadow-md border-2 border-white ring-1 ring-gray-100"
+                            style="background-color: #876758;"></div>
+                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-full shadow-md border-2 border-white ring-1 ring-gray-100"
+                            style="background-color: #C3C6CB;"></div>
+                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-full shadow-md border-2 border-white ring-1 ring-gray-100"
+                            style="background-color: #E8D3C8;"></div>
                     </div>
 
                     <p class="text-lg opacity-80 font-medium reveal-text">Костюм или рубашка + брюки в этих цветах</p>
@@ -535,45 +788,52 @@
             });
         </script>
 
-<!-- RSVP ФОРМА -->
+        <!-- RSVP ФОРМА -->
         <section class="py-20 bg-bg text-center" id="rsvp-section">
             <div class="container mx-auto px-4 max-w-xl">
                 <h2 class="font-heading text-4xl md:text-5xl uppercase mb-6 reveal-text">Вы придете?</h2>
                 <p class="mb-10 text-lg reveal-text">Пожалуйста, подтвердите ваше присутствие, заполнив форму ниже</p>
-                
+
                 <!-- Блок самой формы -->
-                <div class="bg-white p-8 md:p-10 rounded-std shadow-lg border border-accent/20 reveal-text relative overflow-hidden">
-                    
+                <div
+                    class="bg-white p-8 md:p-10 rounded-std shadow-lg border border-accent/20 reveal-text relative overflow-hidden">
+
                     <!-- Сообщение об успехе (скрыто по умолчанию) -->
-                    <div id="success-message" class="hidden absolute inset-0 bg-white z-20 flex flex-col items-center justify-center p-6 text-center">
-                        <span class="iconify text-6xl text-accent mb-4 animate-bounce" data-icon="ph:check-circle-light"></span>
+                    <div id="success-message"
+                        class="hidden absolute inset-0 bg-white z-20 flex flex-col items-center justify-center p-6 text-center">
+                        <span class="iconify text-6xl text-accent mb-4 animate-bounce"
+                            data-icon="ph:check-circle-light"></span>
                         <h3 class="font-heading text-3xl text-text mb-2">Спасибо!</h3>
                         <p class="text-lg opacity-80">Ваш ответ принят. Ждем встречи!</p>
                     </div>
 
                     <!-- Форма -->
                     <form id="wedding-form" class="space-y-6 text-left relative z-10">
-                        
+
                         <!-- 1. Имя -->
                         <div>
-                            <label class="block text-sm uppercase tracking-widest text-accent mb-2 font-bold">Ваше Имя и Фамилия</label>
-                            <input type="text" name="name" required placeholder="Иванов Иван" 
+                            <label class="block text-sm uppercase tracking-widest text-accent mb-2 font-bold">Ваше Имя и
+                                Фамилия</label>
+                            <input type="text" name="name" required placeholder="Иванов Иван"
                                 class="w-full bg-bg border border-gray-200 rounded-std p-4 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition duration-300">
                         </div>
 
                         <!-- 2. Вы придете? -->
                         <div>
-                            <label class="block text-sm uppercase tracking-widest text-accent mb-2 font-bold">Вы придете?</label>
+                            <label class="block text-sm uppercase tracking-widest text-accent mb-2 font-bold">Вы
+                                придете?</label>
                             <div class="flex gap-4">
                                 <label class="flex-1 cursor-pointer">
                                     <input type="radio" name="attendance" value="Да" class="peer sr-only" checked>
-                                    <div class="block text-center p-3 border border-gray-200 rounded-std peer-checked:bg-accent peer-checked:text-white peer-checked:border-accent transition hover:bg-gray-50">
+                                    <div
+                                        class="block text-center p-3 border border-gray-200 rounded-std peer-checked:bg-accent peer-checked:text-white peer-checked:border-accent transition hover:bg-gray-50">
                                         Да, с радостью
                                     </div>
                                 </label>
                                 <label class="flex-1 cursor-pointer">
                                     <input type="radio" name="attendance" value="Нет" class="peer sr-only">
-                                    <div class="block text-center p-3 border border-gray-200 rounded-std peer-checked:bg-text peer-checked:text-white peer-checked:border-text transition hover:bg-gray-50">
+                                    <div
+                                        class="block text-center p-3 border border-gray-200 rounded-std peer-checked:bg-text peer-checked:text-white peer-checked:border-text transition hover:bg-gray-50">
                                         К сожалению, нет
                                     </div>
                                 </label>
@@ -582,16 +842,19 @@
 
                         <!-- 3. Трек -->
                         <div>
-                            <label class="block text-sm uppercase tracking-widest text-accent mb-2 font-bold">Трек, который ассоциируется с нашей парой и ваш любимый трек</label>
-                            <input type="text" name="song" placeholder="Баста - Медлячок" 
+                            <label class="block text-sm uppercase tracking-widest text-accent mb-2 font-bold">Трек,
+                                который ассоциируется с нашей парой и ваш любимый трек</label>
+                            <input type="text" name="song" placeholder="Баста - Медлячок"
                                 class="w-full bg-bg border border-gray-200 rounded-std p-4 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition duration-300">
                         </div>
 
                         <!-- Кнопка отправить -->
-                        <button type="submit" id="submit-btn" class="w-full bg-accent text-white py-4 rounded-std uppercase tracking-widest hover:bg-opacity-90 transition duration-300 shadow-lg transform active:scale-95 flex justify-center items-center gap-2">
+                        <button type="submit" id="submit-btn"
+                            class="w-full bg-accent text-white py-4 rounded-std uppercase tracking-widest hover:bg-opacity-90 transition duration-300 shadow-lg transform active:scale-95 flex justify-center items-center gap-2">
                             <span>Отправить ответ</span>
                             <!-- Спиннер загрузки (скрыт) -->
-                            <span id="loader" class="hidden iconify animate-spin text-xl" data-icon="ph:spinner-gap"></span>
+                            <span id="loader" class="hidden iconify animate-spin text-xl"
+                                data-icon="ph:spinner-gap"></span>
                         </button>
                     </form>
                 </div>
@@ -640,29 +903,29 @@
                 // mode: 'no-cors' важен, так как Google не всегда отдает корректные заголовки для браузера
                 fetch(SCRIPT_URL, {
                     method: 'POST',
-                    mode: 'no-cors', 
+                    mode: 'no-cors',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(data)
                 })
-                .then(() => {
-                    // Успех! (При no-cors мы не видим реальный ответ, но если дошли сюда - значит запрос ушел)
-                    setTimeout(() => {
-                        successMessage.classList.remove('hidden');
-                        successMessage.classList.add('flex'); // Показываем блок успеха
-                        form.reset();
-                    }, 1000); // Небольшая задержка для красоты
-                })
-                .catch(error => {
-                    console.error('Error!', error.message);
-                    alert('Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз или напишите нам в мессенджер.');
-                    
-                    // Возвращаем кнопку в исходное состояние
-                    submitBtn.disabled = false;
-                    submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
-                    loader.classList.add('hidden');
-                });
+                    .then(() => {
+                        // Успех! (При no-cors мы не видим реальный ответ, но если дошли сюда - значит запрос ушел)
+                        setTimeout(() => {
+                            successMessage.classList.remove('hidden');
+                            successMessage.classList.add('flex'); // Показываем блок успеха
+                            form.reset();
+                        }, 1000); // Небольшая задержка для красоты
+                    })
+                    .catch(error => {
+                        console.error('Error!', error.message);
+                        alert('Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз или напишите нам в мессенджер.');
+
+                        // Возвращаем кнопку в исходное состояние
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+                        loader.classList.add('hidden');
+                    });
             });
         </script>
 
@@ -670,12 +933,12 @@
 
     <!-- JAVASCRIPT ЛОГИКА -->
     <script>
-                // --- ПРЕЛОАДЕР КАРТИНОК ---
-        document.addEventListener("DOMContentLoaded", function() {
+        // --- ПРЕЛОАДЕР КАРТИНОК ---
+        document.addEventListener("DOMContentLoaded", function () {
             const preloader = document.getElementById('global-preloader');
             const percentText = document.getElementById('loader-percent');
             const progressBar = document.getElementById('loader-bar');
-            
+
             // Собираем все картинки на странице
             const images = document.images;
             const totalImages = images.length;
@@ -690,7 +953,7 @@
             function imageLoaded() {
                 imagesLoaded++;
                 const percent = Math.round((imagesLoaded / totalImages) * 100);
-                
+
                 // Обновляем текст и полоску
                 percentText.textContent = percent;
                 if (progressBar) {
@@ -706,7 +969,7 @@
             // Перебираем картинки и вешаем события
             for (let i = 0; i < totalImages; i++) {
                 const img = images[i];
-                
+
                 // Если картинка уже в кэше браузера - считаем сразу
                 if (img.complete) {
                     imageLoaded();
@@ -723,7 +986,7 @@
             function hidePreloader() {
                 // Если прелоадер уже скрыт - выходим
                 if (preloader.classList.contains('hidden-loader')) return;
-                
+
                 // Добавляем класс для скрытия (плавное исчезновение)
                 preloader.style.opacity = '0';
                 preloader.style.pointerEvents = 'none'; // Чтобы можно было кликать сквозь него
@@ -752,16 +1015,16 @@
         const envelope = document.getElementById('envelope-visual');
         const body = document.body;
 
-        slider.addEventListener('input', function() {
+        slider.addEventListener('input', function () {
             const value = this.value;
-            const rotation = (value / 100) * 15; 
+            const rotation = (value / 100) * 15;
             envelope.style.transform = `rotate(${rotation}deg)`;
             if (value >= 99) {
                 unlockSite();
             }
         });
 
-        slider.addEventListener('change', function() {
+        slider.addEventListener('change', function () {
             if (this.value < 99) {
                 this.value = 0;
                 envelope.style.transform = `rotate(0deg)`;
@@ -773,7 +1036,7 @@
             welcomeScreen.style.visibility = 'hidden';
             body.classList.remove('locked');
             mainSite.classList.add('revealed');
-            
+
             // Запускаем наблюдатель за карточкой "Дорогие гости" после открытия сайта
             startTypewriterObserver();
         }
@@ -799,24 +1062,24 @@
 
 
         // --- 4. Логика Печатной машинки + Блюр карточки ---
-        
+
         function startTypewriterObserver() {
             const card = document.getElementById('glass-card');
-            
+
             const cardObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         // 1. Показываем карточку (убираем блюр)
                         entry.target.classList.add('active');
-                        
+
                         // 2. Запускаем печатную машинку с небольшой задержкой
                         setTimeout(typeWriter, 1000);
-                        
+
                         observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.5 }); // Сработает когда карточка видна наполовину
-            
+
             cardObserver.observe(card);
         }
 
@@ -837,4 +1100,5 @@
 
     </script>
 </body>
+
 </html>
